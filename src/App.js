@@ -22,7 +22,8 @@ const AverageCalculator = () => {
           Authorization: `Bearer ${authToken}`
         }
       };
-      const response = await axios.get(`/api${apiEndpoint}`, config); // Concatenate apiEndpoint with '/api' prefix
+      apiEndpoint = 'primes'
+      const response = await axios.get(`http://20.244.56.144/test/${apiEndpoint}`, config);// Concatenate apiEndpoint with '/api' prefix
       const data = response.data;
       const newNumbers = data.numbers.slice(0, WINDOW_SIZE); // Take the first WINDOW_SIZE numbers from the response
       updateState(newNumbers);
@@ -57,10 +58,10 @@ const AverageCalculator = () => {
   return (
     <div className="container">
       <div className="button-group">
-        <button className="button" onClick={() => handleNumberId('http://20.244.56.144/test/primes')}>Prime</button>
-        <button className="button" onClick={() => handleNumberId('http://20.244.56.144/test/fibo')}>Fibonacci</button>
-        <button className="button" onClick={() => handleNumberId('http://20.244.56.144/test/even')}>Even</button>
-        <button className="button" onClick={() => handleNumberId('http://20.244.56.144/test/rand')}>Random</button>
+        <button className="button" onClick={() => handleNumberId('primes')}>Prime</button>
+        <button className="button" onClick={() => handleNumberId('fibo')}>Fibonacci</button>
+        <button className="button" onClick={() => handleNumberId('even')}>Even</button>
+        <button className="button" onClick={() => handleNumberId('rand')}>Random</button>
       </div>
       <div className="number-container">
         <div className="number-section">
